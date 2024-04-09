@@ -1,3 +1,6 @@
+from time import perf_counter
+
+
 def f(n):
     if n == 0:
         return 1
@@ -34,7 +37,7 @@ def pascal1(n, k):
         return 1
     return pascale1(n-1, k-1) + pascale1(n-1, k)
 
-def pascal2(n, k):
+def pascal2(n, k): #complexity O(k)
     if k > n:
         return 0
     if k == n or k == 0:
@@ -73,11 +76,39 @@ def pascal4(n, k):
     return v
 
 
+#exo 11
+def expo1(x, n): #linear complexity O(n)
+    c = 1
+    for k in range(n):
+        c *= x
+    return c
+
+def expo2(x, n): #linear complexity O(n)
+    if n == 0:
+        return 1
+    if x == 0 or x == 1:
+        return x
+    return x * expo2(x, n-1)
 
 
 
+def expo4(x, n): #complexity O(log(n))
+    if n == 0:
+        return 1
+    a = expo4(x, n//2)
+    if n % 2 == 0:
+        return a * a
+    return x * a * a
 
-
-
+    
+def expo3(x, n):  #complexity O(log(n))
+    if n == 0:
+        return 1
+    a = expo3(x*x, n//2)
+    if n % 2 == 0:
+        return a
+    else:
+        return x * a
+    
 
 
